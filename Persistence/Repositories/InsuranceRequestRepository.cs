@@ -5,12 +5,12 @@ namespace Persistence.Repositories;
 
 public class InsuranceRequestRepository : IInsuranceRequestRepository
 {
-    public Task AddAsync(InsuranceRequest request)
+    public Task AddAsync(InsuranceRequestModel request)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ICollection<InsuranceRequest>> GetAllAsync()
+    public Task<ICollection<InsuranceRequestModel>> GetAllAsync()
     {
         throw new NotImplementedException();
     }

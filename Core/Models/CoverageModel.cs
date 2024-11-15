@@ -2,7 +2,7 @@
 
 namespace Core.Models;
 
-public class Coverage
+public class CoverageModel
 {
     public int Id { get; set; }
     public CoverageType CoverageTypeId { get; set; }

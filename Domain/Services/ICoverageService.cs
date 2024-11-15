@@ -1,9 +1,9 @@
 ﻿using Core.Enums;
 using Core.Models;
 
-namespace Core.Repositories;
+namespace Domain.Services;
 
-public interface ICoverageRepository
+public interface ICoverageService
 {
     Task<ICollection<CoverageModel>> GetAsync(CoverageType[] coverageTypes);
 }
