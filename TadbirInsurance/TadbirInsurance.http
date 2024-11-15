@@ -1,0 +1,6 @@
+@TadbirInsurance_HostAddress = http://localhost:5262
+
+GET {{TadbirInsurance_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
