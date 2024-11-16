@@ -1,4 +1,6 @@
-﻿namespace Core.Models;
+﻿using Core.Enums;
+
+namespace Core.Models;
 
 public class CoverageModel
 {
