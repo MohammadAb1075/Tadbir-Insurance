@@ -17,16 +17,16 @@ public class InsuranceController(ISender _sender) : ControllerBase
         var insuranceRequestParam = new CreateParam
         {
             Title = request.Title,
-            Coverages = request.Coverages.Select(c => new CreateParam.CoverageRequestDto
+            Coverages = request.Coverages.Select(c => new CreateParam.CoverageParamDto
             {
                 CoverageType = (CoverageType)c.CoverageType,
                 Amount = c.Amount
             }).ToList()
         };
 
-        await _sender.Send(insuranceRequestParam);
+        var result = await _sender.Send(insuranceRequestParam);
 
-        return Ok(insuranceRequestParam);
+        return Ok(result);
     }
 
     [HttpGet]
@@ -36,7 +36,9 @@ public class InsuranceController(ISender _sender) : ControllerBase
 
         var result = await _sender.Send(param);
 
+        if(result is null)
+            return NotFound("");
+
         return Ok(result);
     }
-
 }

@@ -1,12 +1,13 @@
 ﻿using Core.Enums;
 using Core.Repositories;
+using Infrastrucrure.ApiResponse;
 using MediatR;
 
 namespace Application.Components.Insurance.Get;
 
-public class GetHandler(IInsuranceRepository _insuranceRepository) : IRequestHandler<GetParam, ICollection<InsuranceResponse>>
+internal class GetHandler(IInsuranceRepository _insuranceRepository) : IRequestHandler<GetParam, ApiResponse<InsuranceResponse[]>>
 {
-    public async Task<ICollection<InsuranceResponse>> Handle(GetParam param, CancellationToken cancellationToken)
+    public async Task<ApiResponse<InsuranceResponse[]>> Handle(GetParam param, CancellationToken cancellationToken)
     {
         var result = await _insuranceRepository.GetAllAsync();
 
@@ -22,6 +23,6 @@ public class GetHandler(IInsuranceRepository _insuranceRepository) : IRequestHan
             }).ToArray()
         }).ToArray();
 
-        return response;
+        return ResponseMessage.Success(response);
     }
 }

@@ -1,12 +1,13 @@
 ﻿using Core.Enums;
+using Infrastrucrure.ApiResponse;
 using Infrastrucrure.Utils;
 using MediatR;
 
 namespace Application.Components.Enums.GetCoverage;
 
-public class GetCoverageEnumHandler : IRequestHandler<GetCoverageEnumParam, ICollection<CoverageEnumResponse>>
+internal class GetCoverageEnumHandler : IRequestHandler<GetCoverageEnumParam, ApiResponse<CoverageEnumResponse[]>>
 {
-    public async Task<ICollection<CoverageEnumResponse>> Handle(GetCoverageEnumParam request, CancellationToken cancellationToken)
+    public async Task<ApiResponse<CoverageEnumResponse[]>> Handle(GetCoverageEnumParam request, CancellationToken cancellationToken)
     {
         var result = EnumUtil.GetValues<CoverageType>();
 
@@ -16,6 +17,6 @@ public class GetCoverageEnumHandler : IRequestHandler<GetCoverageEnumParam, ICol
             Value = x.Value
         }).ToArray();
 
-        return response;
+        return ResponseMessage.Success(response);
     }
 }
